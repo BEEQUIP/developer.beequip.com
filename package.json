@@ -1,5 +1,5 @@
 {
-    "name": "developer.beequip.nl",
+    "name": "developer.beequip.com",
     "version": "0.1.0",
     "description": "Developer portal for Beequip",
     "main": "index.js",
@@ -15,9 +15,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@github.com:BEEQUIP/developer.beequip.nl.git"
+        "url": "git@github.com:BEEQUIP/developer.beequip.com.git"
     },
-    "author": "Beequip <info@beequip.nl>",
+    "author": "Beequip <info@beequip.com>",
     "license": "MIT",
     "dependencies": {
         "@apollo/client": "^3.8.6",
