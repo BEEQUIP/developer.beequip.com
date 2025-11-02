@@ -43,7 +43,7 @@ const Logo = () => {
 const config: DocsThemeConfig = {
     darkMode: true,
     docsRepositoryBase:
-        'https://github.com/BEEQUIP/developer.beequip.nl/tree/master/',
+        'https://github.com/BEEQUIP/developer.beequip.com/tree/master/',
     footer: {
         component: <></>,
     },
@@ -86,7 +86,7 @@ const config: DocsThemeConfig = {
     primaryHue: 38,
     primarySaturation: 100,
     project: {
-        link: 'https://github.com/BEEQUIP/developer.beequip.nl',
+        link: 'https://github.com/BEEQUIP/developer.beequip.com',
     },
     useNextSeoProps() {
         const { asPath } = useRouter()
