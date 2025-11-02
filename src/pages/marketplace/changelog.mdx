@@ -12,17 +12,22 @@ in advance to give clients ample time to make the required changes.
 
 ## Upcoming breaking changes
 
+### 1 February 2026
+
+- Type `ObjectCannotBePlacedError` (deprecated) will be removed from type `ObjectAddResult`.
+- Type `ObjectCannotBePlacedError` (deprecated) will be removed from type `ObjectUpdateResult`.
+
 ### 1 January 2026
 
 - Field `country` on the types `AddCompanyInput` and `UpdateCompanyInput` will be required instead of optional.
 
+## Past changes
+
 ### 1 November 2025
 
-- Field `canObjectBePlaced` (deprecated) will be removed from type `Query`.
-- Field `propupsion` (deprecated) will be removed from type `Object`.
-- Field `ChamberOfCommerceNumberNotResolvedError` (deprecated) will be removed from type `AddCompanyResult`.
-
-## Past changes
+- Field `canObjectBePlaced` was removed from type `Query`.
+- Field `propupsion` was removed from type `Object`.
+- Field `ChamberOfCommerceNumberNotResolvedError` was removed from type `AddCompanyResult`.
 
 ### 30 September 2025
 
