@@ -2,16 +2,16 @@
     "name": "developer.beequip.com",
     "version": "0.1.0",
     "description": "Developer portal for Beequip",
-    "main": "index.js",
     "private": true,
     "scripts": {
-        "audit": "npx audit-ci@^6 --config ./audit-ci.jsonc",
-        "dev": "next --port 8090",
+        "dev": "next --port 8090 --turbopack",
         "build": "next build",
         "start": "next start",
-        "graphql:generate-types": "graphql-codegen",
-        "lint": "next lint --dir src/components --dir src/graphql --dir src/pages --dir src/utility",
-        "lint:fix": "yarn run lint:check --fix"
+        "generate-types": "graphql-codegen",
+        "lint": "eslint --max-warnings 0 .",
+        "lint:fix": "pnpm run lint --fix",
+        "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind",
+        "types": "tsc --noEmit --skipLibCheck"
     },
     "repository": {
         "type": "git",
@@ -19,38 +19,36 @@
     },
     "author": "Beequip <info@beequip.com>",
     "license": "MIT",
+    "engines": {
+        "node": ">=22"
+    },
+    "packageManager": "pnpm@10.28.2",
     "dependencies": {
-        "@apollo/client": "^3.8.6",
-        "@beequip/hexagon": "^0.18.4",
-        "@styled-icons/boxicons-solid": "^10.47.0",
-        "@vercel/analytics": "^1.5.0",
-        "@vercel/speed-insights": "^1.2.0",
-        "formik": "^2.4.5",
-        "graphql": "^16.8.1",
+        "@fortawesome/fontawesome-svg-core": "^7.2.0",
+        "@fortawesome/free-solid-svg-icons": "^7.2.0",
+        "@fortawesome/react-fontawesome": "^3.2.0",
+        "graphql": "^16.13.0",
+        "graphql-request": "^7.4.0",
         "graphql-tag": "^2.12.6",
-        "next": "^13",
-        "nextra": "^2.13.2",
-        "nextra-theme-docs": "^2.13.2",
-        "normalize.css": "^8.0.1",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-is": "^18.2.0",
-        "styled-components": "^5",
-        "styled-map": "^3.3.0",
-        "yup": "^1.3.2"
+        "next": "^16.1.6",
+        "nextra": "^4.6.1",
+        "nextra-theme-docs": "^4.6.1",
+        "react": "^19.2.4",
+        "react-dom": "^19.2.4",
+        "swr": "^2.4.1"
     },
     "devDependencies": {
-        "@graphql-codegen/cli": "^5.0.0",
-        "@graphql-codegen/typescript-operations": "^4.0.1",
-        "@graphql-codegen/typescript-react-apollo": "^4.1.0",
-        "@types/react": "^18",
-        "@types/styled-components": "^5.1.29",
-        "eslint": "^8.52.0",
-        "eslint-config-next": "^13.5.6",
-        "prettier": "^3.0.3",
-        "typescript": "^5.2.2"
-    },
-    "resolutions": {
-        "@types/react": "^18"
+        "@eslint/js": "^9.39.3",
+        "@graphql-codegen/cli": "^6.1.2",
+        "@graphql-codegen/typescript-graphql-request": "^6.4.0",
+        "@graphql-codegen/typescript-operations": "^5.0.8",
+        "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+        "@types/react": "^19.2.14",
+        "@types/styled-components": "^5.1.36",
+        "eslint": "^9.39.3",
+        "eslint-config-next": "^16.1.6",
+        "pagefind": "^1.4.0",
+        "prettier": "^3.8.1",
+        "typescript": "^5.9.3"
     }
 }

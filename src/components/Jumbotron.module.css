@@ -1,0 +1,15 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding-block: 8rem;
+    background-image: url('/images/hexagon-pattern.png');
+    background-color: #ffa100;
+}
+
+.heading-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

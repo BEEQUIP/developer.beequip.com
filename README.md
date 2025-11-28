@@ -7,8 +7,8 @@ Public documentation for integrating your software with Beequip.
 ### Running the app locally
 
 ```
-yarn install
-yarn run dev
+pnpm install
+pnpm run dev
 ```
 
 The app will be available at `http://localhost:8090`.

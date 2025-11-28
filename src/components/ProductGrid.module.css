@@ -1,0 +1,13 @@
+.root {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(1, 1fr);
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    & :last-child {
+        grid-column: -1 / 1;
+    }
+}

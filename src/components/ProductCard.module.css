@@ -1,0 +1,43 @@
+.root {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 2rem 3rem;
+    background: linear-gradient(to bottom, #2b6588, #112b3a);
+    border-radius: 16px;
+    box-shadow:
+        0 0 6px 0 rgba(0, 0, 0, 0.2),
+        0 2px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.heading-link {
+    color: #fcf252;
+    transition: color 150ms ease-out;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+    }
+
+    :has(:hover) > & {
+        color: #ffa100;
+    }
+}
+
+.deck {
+    color: #fff;
+    margin-block-end: 1rem;
+}
+
+.icon {
+    margin-block-start: auto;
+    color: #ffa100;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

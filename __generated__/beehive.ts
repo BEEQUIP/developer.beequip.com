@@ -1,5 +1,6 @@
-import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
+import { GraphQLClient, RequestOptions } from 'graphql-request'
+import gql from 'graphql-tag'
+
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -22,7 +23,7 @@ export type Incremental<T> =
               ? T[P]
               : never
       }
-const defaultOptions = {} as const
+type GraphQLClientRequestHeaders = RequestOptions['requestHeaders']
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
     ID: { input: string; output: string }
@@ -898,6 +899,7 @@ export enum CreditInvoiceTypeEnum {
     IncreasedFirstAnnuity = 'increased_first_annuity',
     KvoDepot = 'kvo_depot',
     MissedInterest = 'missed_interest',
+    MissedPayment = 'missed_payment',
     MonthlyAnnuityTerm = 'monthly_annuity_term',
     PurchaseOption = 'purchase_option',
     Renewal = 'renewal',
@@ -1020,7 +1022,6 @@ export enum DealSigningStateEnum {
     GeneratingFailed = 'generating_failed',
     Pending = 'pending',
     Provided = 'provided',
-    Rejected = 'rejected',
     SignatoryChoice = 'signatory_choice',
     Signed = 'signed',
     Unready = 'unready',
@@ -1037,6 +1038,7 @@ export enum DealStatesEnum {
     BoughtOffEarly = 'bought_off_early',
     Calculation = 'calculation',
     Cancelled = 'cancelled',
+    CompleteScheduled = 'complete_scheduled',
     Completed = 'completed',
     Complied = 'complied',
     CompliedSoft4leaseExported = 'complied_soft4lease_exported',
@@ -1066,6 +1068,7 @@ export enum DealStatesEnum {
     QuoteApprovedLegalRequired = 'quote_approved_legal_required',
     QuoteComplete = 'quote_complete',
     Rejected = 'rejected',
+    RenewalRequested = 'renewal_requested',
     Renewed = 'renewed',
     RenewedOrPaidOff = 'renewed_or_paid_off',
     RequestStarted = 'request_started',
@@ -1284,6 +1287,7 @@ export type LeaseOrderInput = {
 export enum LeaseStatesEnum {
     BoughtOffEarly = 'bought_off_early',
     Cancelled = 'cancelled',
+    CompleteScheduled = 'complete_scheduled',
     Completed = 'completed',
     Complied = 'complied',
     CompliedSoft4leaseExported = 'complied_soft4lease_exported',
@@ -1301,6 +1305,7 @@ export enum LeaseStatesEnum {
     PayoutPrepared = 'payout_prepared',
     Processing = 'processing',
     Rejected = 'rejected',
+    RenewalRequested = 'renewal_requested',
     Renewed = 'renewed',
     SignedContractApproved = 'signed_contract_approved',
     SignedContractCompleted = 'signed_contract_completed',
@@ -1478,6 +1483,7 @@ export enum SalesInvoiceTypesEnum {
     IncreasedFirstAnnuity = 'increased_first_annuity',
     KvoDepot = 'kvo_depot',
     MissedInterest = 'missed_interest',
+    MissedPayment = 'missed_payment',
     MonthlyAnnuityTerm = 'monthly_annuity_term',
     PurchaseOption = 'purchase_option',
     Renewal = 'renewal',
@@ -1881,65 +1887,46 @@ export const CategoriesDocument = gql`
     }
 `
 
-/**
- * __useCategoriesQuery__
- *
- * To run a query within a React component, call `useCategoriesQuery` and pass it any options that fit your needs.
- * When your component renders, `useCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useCategoriesQuery({
- *   variables: {
- *   },
- * });
- */
-export function useCategoriesQuery(
-    baseOptions?: Apollo.QueryHookOptions<
-        CategoriesQuery,
-        CategoriesQueryVariables
-    >
+export type SdkFunctionWrapper = <T>(
+    action: (requestHeaders?: Record<string, string>) => Promise<T>,
+    operationName: string,
+    operationType?: string,
+    variables?: any
+) => Promise<T>
+
+const defaultWrapper: SdkFunctionWrapper = (
+    action,
+    _operationName,
+    _operationType,
+    _variables
+) => action()
+
+export function getSdk(
+    client: GraphQLClient,
+    withWrapper: SdkFunctionWrapper = defaultWrapper
 ) {
-    const options = { ...defaultOptions, ...baseOptions }
-    return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(
-        CategoriesDocument,
-        options
-    )
+    return {
+        Categories(
+            variables?: CategoriesQueryVariables,
+            requestHeaders?: GraphQLClientRequestHeaders,
+            signal?: RequestInit['signal']
+        ): Promise<CategoriesQuery> {
+            return withWrapper(
+                (wrappedRequestHeaders) =>
+                    client.request<CategoriesQuery>({
+                        document: CategoriesDocument,
+                        variables,
+                        requestHeaders: {
+                            ...requestHeaders,
+                            ...wrappedRequestHeaders,
+                        },
+                        signal,
+                    }),
+                'Categories',
+                'query',
+                variables
+            )
+        },
+    }
 }
-export function useCategoriesLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<
-        CategoriesQuery,
-        CategoriesQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions }
-    return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(
-        CategoriesDocument,
-        options
-    )
-}
-export function useCategoriesSuspenseQuery(
-    baseOptions?: Apollo.SuspenseQueryHookOptions<
-        CategoriesQuery,
-        CategoriesQueryVariables
-    >
-) {
-    const options = { ...defaultOptions, ...baseOptions }
-    return Apollo.useSuspenseQuery<CategoriesQuery, CategoriesQueryVariables>(
-        CategoriesDocument,
-        options
-    )
-}
-export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>
-export type CategoriesLazyQueryHookResult = ReturnType<
-    typeof useCategoriesLazyQuery
->
-export type CategoriesSuspenseQueryHookResult = ReturnType<
-    typeof useCategoriesSuspenseQuery
->
-export type CategoriesQueryResult = Apollo.QueryResult<
-    CategoriesQuery,
-    CategoriesQueryVariables
->
+export type Sdk = ReturnType<typeof getSdk>

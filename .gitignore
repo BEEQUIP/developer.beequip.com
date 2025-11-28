@@ -11,3 +11,6 @@ node_modules
 
 # Development
 graphql.schema.json
+
+# Pagefind, search engine in Nextra
+_pagefind/
