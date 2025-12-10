@@ -33,7 +33,7 @@ Make a request to https://staging.beequip.com/marktplaats/api/oauth2/token/ to f
 ```bash
 curl -d '{"client_id":"<client_id>", "client_secret":"<client_secret>", "grant_type":"client_credentials"}' \
     -H "Content-Type: application/json" \
-    -H "Proxy-Authorization: Basic <testing_password>" \
+    -H "x-vercel-protection-bypass: <secret>" \
     -X POST https://staging.beequip.com/marktplaats/api/oauth2/token/
 ```
 
@@ -55,7 +55,7 @@ Add the access token to the `Authorization` header and make a GraphQL request.
 
 ```bash
 curl -H "Authorization: Bearer <token>" \
-    -H "Proxy-Authorization: Basic <testing_password>" \
+    -H "x-vercel-protection-bypass: <secret>" \
     -X POST -d "{\"query\": \"query { categoryGroups { name } }\" } \" \
     https://staging.beequip.com/marktplaats/api/graphql/
 ```
