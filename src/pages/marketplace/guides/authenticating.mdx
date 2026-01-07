@@ -28,13 +28,13 @@ These will be provided by Beequip. Call us at [010 - 340 0844](tel:0103400844) i
 
 ## Get a token
 
-Make a request to https://staging.beequip.com/marktplaats/api/oauth2/token/ to fetch an access token. (Replace `<client_id>` and `<client_secret>` with your own credentials, and `testing_password` with the password for the testing environment.)
+Make a request to https://staging.beequip.com/marktplaats/api/oauth2/token to fetch an access token. (Replace `<client_id>` and `<client_secret>` with your own credentials, and `testing_password` with the password for the testing environment.)
 
 ```bash
 curl -d '{"client_id":"<client_id>", "client_secret":"<client_secret>", "grant_type":"client_credentials"}' \
     -H "Content-Type: application/json" \
-    -H "Proxy-Authorization: Basic <testing_password>" \
-    -X POST https://staging.beequip.com/marktplaats/api/oauth2/token/
+    -H "x-vercel-protection-bypass: <secret>" \
+    -X POST https://staging.beequip.com/marktplaats/api/oauth2/token
 ```
 
 This will yield an access token response.
@@ -55,9 +55,9 @@ Add the access token to the `Authorization` header and make a GraphQL request.
 
 ```bash
 curl -H "Authorization: Bearer <token>" \
-    -H "Proxy-Authorization: Basic <testing_password>" \
+    -H "x-vercel-protection-bypass: <secret>" \
     -X POST -d "{\"query\": \"query { categoryGroups { name } }\" } \" \
-    https://staging.beequip.com/marktplaats/api/graphql/
+    https://staging.beequip.com/marktplaats/api/graphql
 ```
 
 This will yield a list of categories of the marketplace.
@@ -84,7 +84,7 @@ This will yield a list of categories of the marketplace.
 
 To make your integration ready for a first release to production, you will need to change these things:
 
-1.  The URL to get your token should change to https://beequip.com/marktplaats/api/oauth2/token/
-2.  The URL for your GraphQL requests should change to https://beequip.com/marktplaats/api/graphql/
+1.  The URL to get your token should change to https://beequip.com/marktplaats/api/oauth2/token
+2.  The URL for your GraphQL requests should change to https://beequip.com/marktplaats/api/graphql
 3.  You can omit the `Proxy-Authorization` header. (Nothing will break if you still send it, though.)
 4.  You will need a new `client_id` and `client_secret` for the production environment.
