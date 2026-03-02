@@ -12,82 +12,85 @@ in advance to give clients ample time to make the required changes.
 
 ## Upcoming breaking changes
 
-### 1 March 2026
-
-- Field `order` on type `PhotoInput` will be non-nullable.
-- Field `order` on type `Photo` will be non-nullable.
+No upcoming breaking changes.
 
 ## Past changes
 
+### 4 March 2026
+
+-   Field `order` on type `PhotoInput` is now non-nullable.
+-   Field `order` on type `Photo` is now non-nullable.
+
 ### 3 February 2026
 
-- Type `ObjectCannotBePlacedError` was removed from type `ObjectAddResult`.
-- Type `ObjectCannotBePlacedError` was removed from type `ObjectUpdateResult`.
+-   Type `ObjectCannotBePlacedError` was removed from type `ObjectAddResult`.
+-   Type `ObjectCannotBePlacedError` was removed from type `ObjectUpdateResult`.
 
 ### 7 January 2026
 
-- Authentication endpoint changed from `https://beequip.com/marktplaats/api/oauth2/token/` to `https://beequip.com/marktplaats/api/oauth2/token`.
-- GraphQL endpoint changed from `https://beequip.com/marktplaats/api/graphql/` to `https://beequip.com/marktplaats/api/graphql`.
+-   Authentication endpoint changed from `https://beequip.com/marktplaats/api/oauth2/token/` to `https://beequip.com/marktplaats/api/oauth2/token`.
+-   GraphQL endpoint changed from `https://beequip.com/marktplaats/api/graphql/` to `https://beequip.com/marktplaats/api/graphql`.
 
-    ### 3 February 2026
-    - Field `objectTotalUsage` added to type `CreateDealInput` to support submitting the odometer reading.
+### 3 February 2026
+
+-   Field `objectTotalUsage` added to type `CreateDealInput` to support submitting the odometer reading.
 
 ### 1 January 2026
 
-- Field `country` on type `AddCompanyInput` is now required.
-- Field `country` on type `UpdateCompanyInput` is now required.
+-   Field `country` on type `AddCompanyInput` is now required.
+-   Field `country` on type `UpdateCompanyInput` is now required.
 
 ### 18 December 2025
 
-- Enum value `Germany` was added to type `CompanyCountry`.
+-   Enum value `Germany` was added to type `CompanyCountry`.
 
 ### 1 November 2025
 
-- Field `canObjectBePlaced` was removed from type `Query`.
-- Field `propupsion` was removed from type `Object`.
-- Field `ChamberOfCommerceNumberNotResolvedError` was removed from type `AddCompanyResult`.
+-   Field `canObjectBePlaced` was removed from type `Query`.
+-   Field `propupsion` was removed from type `Object`.
+-   Field `ChamberOfCommerceNumberNotResolvedError` was removed from type `AddCompanyResult`.
 
 ### 30 September 2025
 
-- Field `country` was added to the types `AddCompanyInput` and `UpdateCompanyInput`.
+-   Field `country` was added to the types `AddCompanyInput` and `UpdateCompanyInput`.
 
 ### 18 March 2025
 
-- Field `object` was added to type `Query`.
+-   Field `object` was added to type `Query`.
 
 ### 14 October 2024
 
-- Field `engineDisplacement` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `engineDisplacement` was added to the types `AddObjectInput` and `UpdateObjectInput`.
 
 ### 10 October 2024
 
-- Field `cabinType` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `country` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `emissionNorm` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `enginePowerInHp` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `loadCapacity` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `maxWeight` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `marginScheme` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `numberOfCylinders` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `rangeFuel` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `rangeElectric` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `tareWeight` was added to the types `AddObjectInput` and `UpdateObjectInput`.
-- Field `trailerLoad` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `cabinType` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `country` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `emissionNorm` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `enginePowerInHp` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `loadCapacity` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `maxWeight` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `marginScheme` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `numberOfCylinders` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `rangeFuel` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `rangeElectric` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `tareWeight` was added to the types `AddObjectInput` and `UpdateObjectInput`.
+-   Field `trailerLoad` was added to the types `AddObjectInput` and `UpdateObjectInput`.
 
 ### 9 July 2024
 
-- Field `model` was added to type `AddObjectInput`.
-  This was added to provide more granular details when adding an object. For example, when adding a “Citroën Berlingo 2.0 HDI”, you previously had to set the field `type` to “Berlingo 2.0 HDI”. With the new `model` field, you can set the `model` to “Berlingo” and `type` to “2.0 HDI”.
-- Field `model` was added to type `UpdateObjectInput`.
-- Field `model` was added to type `Object`.
+-   Field `model` was added to type `AddObjectInput`.
+    This was added to provide more granular details when adding an object. For example, when adding a “Citroën Berlingo 2.0 HDI”, you previously had to set the field `type` to “Berlingo 2.0 HDI”. With the new `model` field, you can set the `model` to “Berlingo” and `type` to “2.0 HDI”.
+-   Field `model` was added to type `UpdateObjectInput`.
+-   Field `model` was added to type `Object`.
 
 ### 12 June 2024
 
-- Field `usage` on type `Object` was marked as deprecated. Use the fields `usageInKilometers` or `usageInOperatingHours` instead.
-- Field `usage` on type `AddObjectInput` was marked as deprecated. Use the fields `usageInKilometers` or `usageInOperatingHours` instead.
-- Field `usage` on type `UpdateObjectInput` was marked as deprecated. Use the fields `usageInKilometers` or `usageInOperatingHours` instead.
-- Query `canObjectBePlaced` was marked as deprecated. There is no replacement.
+-   Field `usage` on type `Object` was marked as deprecated. Use the fields `usageInKilometers` or `usageInOperatingHours` instead.
+-   Field `usage` on type `AddObjectInput` was marked as deprecated. Use the fields `usageInKilometers` or `usageInOperatingHours` instead.
+-   Field `usage` on type `UpdateObjectInput` was marked as deprecated. Use the fields `usageInKilometers` or `usageInOperatingHours` instead.
+-   Query `canObjectBePlaced` was marked as deprecated. There is no replacement.
 
 ### 28 March 2024
 
-- Field `propupsion` on type `Object` was marked as deprecated. Use the field `propulsion` instead.
+-   Field `propupsion` on type `Object` was marked as deprecated. Use the field `propulsion` instead.
