@@ -1,0 +1,16 @@
+.root {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 2rem 3rem;
+    background-color: #ecf4f9;
+    border-radius: 16px;
+    box-shadow:
+        0 0 6px 0 rgba(0, 0, 0, 0.2),
+        0 2px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.deck {
+    color: #1c4259;
+}

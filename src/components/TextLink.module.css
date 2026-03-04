@@ -1,0 +1,16 @@
+.root {
+    text-decoration: underline;
+    transition: color 150ms ease-out;
+    font-weight: 500;
+
+    &:link,
+    &:visited {
+        color: #ffa100;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: #1c4259;
+    }
+}

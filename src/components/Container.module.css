@@ -1,0 +1,7 @@
+.root {
+    max-width: var(--nextra-content-width);
+    width: 100%;
+    margin-inline: auto;
+    padding-right: max(env(safe-area-inset-right), 1.5rem);
+    padding-left: max(env(safe-area-inset-left), 1.5rem);
+}

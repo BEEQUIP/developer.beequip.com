@@ -1,0 +1,19 @@
+const meta = {
+    index: {
+        title: 'Introduction',
+    },
+    graphql: {
+        title: 'About GraphQL',
+    },
+    guides: {
+        title: 'Guides',
+    },
+    changelog: {
+        title: 'Changelog',
+    },
+    reference: {
+        title: 'Reference',
+    },
+}
+
+export default meta
