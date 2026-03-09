@@ -31,57 +31,44 @@ export const CategoryTable = () => {
                             <td className={styles.cell}>
                                 <details>
                                     <summary>{category.name}</summary>
-                                    {subcategories.map((subcategory) => (
-                                        <table
-                                            className={styles.table}
-                                            key={subcategory.id}
-                                        >
-                                            <thead>
-                                                <tr>
-                                                    <th
-                                                        className={
-                                                            styles.subheader
-                                                        }
-                                                    >
-                                                        Id
-                                                    </th>
-                                                    <th
-                                                        className={
-                                                            styles.subheader
-                                                        }
-                                                    >
-                                                        Subcategory
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {subcategories.map(
-                                                    (subcategory) => (
-                                                        <tr
-                                                            key={subcategory.id}
+                                    <table className={styles.table}>
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    className={styles.subheader}
+                                                >
+                                                    Id
+                                                </th>
+                                                <th
+                                                    className={styles.subheader}
+                                                >
+                                                    Subcategory
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {subcategories.map(
+                                                (subcategory) => (
+                                                    <tr key={subcategory.id}>
+                                                        <td
+                                                            className={
+                                                                styles.cell
+                                                            }
                                                         >
-                                                            <td
-                                                                className={
-                                                                    styles.cell
-                                                                }
-                                                            >
-                                                                {subcategory.id}
-                                                            </td>
-                                                            <td
-                                                                className={
-                                                                    styles.cell
-                                                                }
-                                                            >
-                                                                {
-                                                                    subcategory.name
-                                                                }
-                                                            </td>
-                                                        </tr>
-                                                    )
-                                                )}
-                                            </tbody>
-                                        </table>
-                                    ))}
+                                                            {subcategory.id}
+                                                        </td>
+                                                        <td
+                                                            className={
+                                                                styles.cell
+                                                            }
+                                                        >
+                                                            {subcategory.name}
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            )}
+                                        </tbody>
+                                    </table>
                                 </details>
                             </td>
                         </tr>
