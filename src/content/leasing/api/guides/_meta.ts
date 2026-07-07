@@ -5,9 +5,6 @@ const meta = {
     leasing: {
         title: 'Guide to leasing',
     },
-    changelog: {
-        title: 'Changelog',
-    },
 }
 
 export default meta

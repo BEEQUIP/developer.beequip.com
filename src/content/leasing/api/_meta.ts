@@ -5,6 +5,9 @@ const meta = {
     guides: {
         title: 'Guides',
     },
+    changelog: {
+        title: 'Changelog',
+    },
     reference: {
         title: 'Reference',
     },

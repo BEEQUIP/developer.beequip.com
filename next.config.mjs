@@ -11,6 +11,11 @@ export default withNextra({
     async redirects() {
         return [
             {
+                source: '/leasing/api/guides/changelog',
+                destination: '/leasing/api/changelog',
+                permanent: true,
+            },
+            {
                 source: '/widgets/calculator',
                 destination: '/docs/widgets/variants/calculator',
                 permanent: true,
