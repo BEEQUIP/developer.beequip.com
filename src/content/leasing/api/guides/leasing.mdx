@@ -34,7 +34,23 @@ visitor doesn’t have to calculate manually. The requests to accomplish this ar
 - Call the `leaseSuggestions` query to retrieve 1 or more suggested pricing plans and show them to the user.
 - Let the user select a suggested plan, and call the `updateLease` mutation to apply the suggestion to the lease.
 - Let the user enter their contact details, and call the `requestDeal` mutation.
-- You’re done, Beequip has received the deal and will start processing it.
+- You're done, Beequip has received the deal and will start processing it.
+
+### Tracking deal progress
+
+After calling `requestDeal`, the mutation returns the deal with its current state. You can then use the `deal` query to monitor the deal's progress through the application process.
+
+The deal will progress through various states as Beequip processes the application:
+
+- After submission, the deal is being reviewed by Beequip
+- Once approved, you'll be notified that a quote is ready
+- When ready, the contract will be sent to the customer
+- After the customer signs, Beequip will perform final checks
+- Finally, the lease becomes active
+
+You can poll the `deal` query periodically to check for state changes and notify your users when their application has been approved, when they need to sign the contract, or if the application was rejected. The specific state values are available in the GraphQL schema.
+
+### Optional queries
 
 Two queries are optional:
 
